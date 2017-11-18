@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<TITLE>Tic Tac Toe</TITLE>
+
+</HEAD>
+<BODY background="body.jpeg">
+<style>
+#canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+.canvas-wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.canvas-wrapper-parent {
+  transform-style: preserver-3d;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+</style>
+<div>
+<canvas id="canvas" width="1280" height="720">
+<script src="game.js"></script>
+</canvas>
+</div>
+
+
+<div class="wrapper">
+<button type="button" onclick="Reset()">Reset!</button>
+</div>
+<h1 id="win_log">Play!</h1>
+<h4>Made By: Ayham Mamoun</h4>
+</BODY>
+</HTML>
