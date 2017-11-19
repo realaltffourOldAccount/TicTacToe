@@ -27,9 +27,68 @@ function getInitialBoard(defualtValue)
 
 var board = getInitialBoard(" ");
 
-function SetCellValByCord(xCordinate, yCordinate, value)
+function GetCellValByCord(xCordinate, yCordinate)
 {
 		// first row
+		// cell 1
+		if	(xCordinate < sectionSize && yCordinate < sectionSize)
+		{
+			return board[0][0];
+		}
+		// cell 2
+		if	(xCordinate < sectionSize * 2 && !(xCordinate < sectionSize)
+		&& yCordinate < sectionSize)
+		{
+			return board[0][1];
+		}
+		// cell 3
+		if	(xCordinate < sectionSize * 3 && !(xCordinate < sectionSize * 2) 
+		&& yCordinate < sectionSize)
+		{
+			return board[0][2];
+		}
+		// second row
+		// cell 4
+		if	(xCordinate < sectionSize 
+		&&	(yCordinate < sectionSize + sectionSize && !yCordinate < sectionSize))
+		{
+			return board[1][0];
+		}
+		// cell 5
+		if	(xCordinate < sectionSize + sectionSize && !(xCordinate < sectionSize) &&
+		(yCordinate < sectionSize * 2 && !yCordinate < sectionSize))
+		{
+			return board[1][1];
+		}
+		// cell 6
+		if	(xCordinate < sectionSize * 3 && !(xCordinate < sectionSize * 2)
+		 && (yCordinate < sectionSize * 2 && !yCordinate < sectionSize))
+		{
+			return board[1][2];
+		}
+		// cell 7
+		if	(xCordinate < sectionSize &&
+		(yCordinate < sectionSize * 3 && !yCordinate < sectionSize * 2))
+		{
+			return board[2][0] ;
+		}
+		// cell 8
+		if	(xCordinate < sectionSize + sectionSize && !(xCordinate < sectionSize)
+		 && (yCordinate < sectionSize * 3 && !yCordinate < sectionSize * 2))
+		{
+			return board[2][1];
+		}
+		// cell 9
+		if	(xCordinate < sectionSize + sectionSize + sectionSize && !(xCordinate < sectionSize * 2)
+		 && (yCordinate < sectionSize * 3 && !yCordinate < sectionSize * 2))
+		{
+			return board[2][2] ;
+		}
+}
+
+function SetCellValByCord(xCordinate, yCordinate, value)
+{
+			// first row
 		// cell 1
 		if	(xCordinate < sectionSize && yCordinate < sectionSize)
 		{
@@ -92,65 +151,6 @@ function SetCellValByCord(xCordinate, yCordinate, value)
 		{
 			board[2][2] = value;
 			return;
-		}
-}
-
-function GetCellValByCord(xCordinate, yCordinate)
-{
-		// first row
-		// cell 1
-		if	(xCordinate < sectionSize && yCordinate < sectionSize)
-		{
-			return board[0][0];
-		}
-		// cell 2
-		if	(xCordinate < sectionSize * 2 && !(xCordinate < sectionSize)
-		&& yCordinate < sectionSize)
-		{
-			return board[0][1];
-		}
-		// cell 3
-		if	(xCordinate < sectionSize * 3 && !xCordinate < sectionSize * 2 
-		&& yCordinate < sectionSize)
-		{
-			return board[0][2];
-		}
-		// second row
-		// cell 4
-		if	(xCordinate < sectionSize && 
-		(yCordinate < sectionSize + sectionSize && !yCordinate < sectionSize))
-		{
-			return board[1][0];
-		}
-		// cell 5
-		if	(xCordinate < sectionSize + sectionSize && 
-		(yCordinate < sectionSize + sectionSize && !yCordinate < sectionSize))
-		{
-			return board[1][1];
-		}
-		// cell 6
-		if	(xCordinate < sectionSize * 3
-		 && (yCordinate < sectionSize + sectionSize + sectionSize && !yCordinate < sectionSize))
-		{
-			return board[1][2];
-		}
-		// cell 7
-		if	(xCordinate < sectionSize 
-		&& (yCordinate < sectionSize*3 && !yCordinate < sectionSize * 2))
-		{
-			return board[2][0];
-		}
-		// cell 8
-		if	(xCordinate < sectionSize + sectionSize
-		 && (yCordinate < sectionSize && !yCordinate < sectionSize * 2))
-		{
-			return board[2][1];
-		}
-		// cell 9
-		if	(xCordinate < sectionSize + sectionSize + sectionSize
-		 && (yCordinate < sectionSize * 2))
-		{
-			return board[2][2];
 		}
 }
 
@@ -312,12 +312,20 @@ function addPlayingPiece (mouse) {
           mouse.y >= yCordinate && mouse.y <= yCordinate + sectionSize
         )
         {
+
+if (GetCellValByCord(xCordinate,yCordinate) != " ")
+{
+alert("Place Taken!");
+}
+else {
+
         		if (player === 1) {
           	drawX(xCordinate, yCordinate);
         		} else {
          	 drawO(xCordinate, yCordinate);
         		}
-        }
+}  
+      }
     }
   }
 }
